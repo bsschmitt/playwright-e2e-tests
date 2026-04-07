@@ -26,7 +26,20 @@ jobs:
         run: npx playwright install --with-deps
 
       - name: Rodar Testes
-        run: npx playwright test --reporter=html
+        run: npx playwright test --reporter=line,allure-playwright
+
+      - name: Install Allure
+        run: npm install -g allure-commandline
+
+      - name: Gera relatório Allure
+        run: |
+          allure generate allure-results --clean -o allure-report
+
+      - name: Upload Allure Report
+        uses: actions/upload-artifact@v4
+        with:
+          name: allure-report
+          path: allure-report
 
       - name: Upload relatório
         uses: actions/upload-artifact@v4

@@ -1,4 +1,4 @@
-import {Page} from '@playwright/test';
+import {Page, expect} from '@playwright/test';
 
 export class LoginPage{
     readonly page: Page;
@@ -8,7 +8,7 @@ export class LoginPage{
     }
 
     async acessarSite(){
-        await this.page.goto('https://www.saucedemo.com/');
+        await this.page.goto('/');
     }
 
     async preencherUsuario(usuario: string) {
@@ -27,5 +27,9 @@ export class LoginPage{
         await this.preencherUsuario(usuario);
         await this.preencherSenha(senha);
         await this.clicarLogin();
+    }
+
+    async validarErro(mensagem: string){
+        await expect(this.page.locator('[data-test="error"]')).toContainText(mensagem);
     }
 }

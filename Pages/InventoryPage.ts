@@ -12,7 +12,7 @@ export class InventoryPage {
     }
 
     async adicionarProdutoCarrinho(){
-        await this.page.locator('[data-test="add=to-cart-sauce-labs-backpack"]').click();
+        await this.page.locator('[data-test="add-to-cart-sauce-labs-backpack"]').click();
     }
 
     async validarCarrinho(qtd: string){
@@ -20,7 +20,7 @@ export class InventoryPage {
     }
 
     async abrirCarrinho(){
-        await this.page.locator('shopping_cart_link').click();
+        await this.page.locator('.shopping_cart_link').click();
     }
 
     async efetuarLogout(){

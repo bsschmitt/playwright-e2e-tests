@@ -4,7 +4,7 @@ import { InventoryPage } from '../Pages/InventoryPage'
 import { CartPage } from '../Pages/CartPage'
 import { CheckoutPage } from '../Pages/CheckoutPage'
 
-test.describe('E2E', () => {
+test.describe('Fluxo Principal com checkout', () => {
     test.beforeEach(async ({page}) => {
         const login = new LoginPage(page);
         const inventory = new InventoryPage(page);

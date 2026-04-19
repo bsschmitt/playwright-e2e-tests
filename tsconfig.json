@@ -1,6 +1,5 @@
 {
   "compilerOptions": {
-    "ignoreDeprecations": "6.0",
     "target": "ESNext",
     "module": "CommonJS",
     "strict": true,
@@ -9,7 +8,7 @@
     "moduleResolution": "node",   // minúsculo
     "resolveJsonModule": true,
     "outDir": "dist",
-    "types": ["node"]
+    "types": ["node", "@playwright/test"]
   },
   "include": ["tests/**/*.ts", "Pages/**/*.ts", "playwright.config.ts"]
 }

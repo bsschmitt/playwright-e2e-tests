@@ -1,4 +1,5 @@
-import { test, expect } from '@playwright/test';
+/// <reference types="@playwright/test" />
+import { test, expect } from '../fixtures/test-fixtures';
 import { LoginPage } from '../Pages/LoginPage';
 import { InventoryPage } from '../Pages/InventoryPage';
 import { CartPage } from '../Pages/CartPage';

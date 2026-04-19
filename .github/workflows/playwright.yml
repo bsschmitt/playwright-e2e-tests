@@ -26,7 +26,10 @@ jobs:
         run: npx playwright install --with-deps
 
       - name: Rodar Testes
-        run: npx playwright test 
+        run: npx playwright test
+
+      - name: Fix report
+        run: node scripts/fix-report.js
 
       - name: Upload relatório
         uses: actions/upload-artifact@v4

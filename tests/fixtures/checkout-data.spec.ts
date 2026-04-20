@@ -5,7 +5,7 @@ test('Checkout utilizando fixture de dados', async ({ cartWithItem, cartPage, ch
 
     await cartPage.checkout()
 
-    await checkoutPage.preencherDados(
+    await checkoutPage.preencherDadosFixture(
         userData.firstName,
         userData.lastName,
         userData.postalCode

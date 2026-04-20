@@ -23,7 +23,7 @@ test.describe('Fluxo Principal com checkout', () => {
        const checkout = new CheckoutPage(page);
 
        await cart.checkout();
-       await checkout.preencherDados();
+       await checkout.preencherDadosNormal();
        await checkout.validaSucesso();
     });
 

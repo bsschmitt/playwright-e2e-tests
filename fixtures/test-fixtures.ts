@@ -10,7 +10,13 @@ type Fixtures = {
   inventoryPage: InventoryPage;
   cartPage: CartPage;
   checkoutPage: CheckoutPage;
+  cartWithItem: Page;
   loggedPage: Page;
+  userData: {
+    firstName: string;
+    lastName: string;
+    postalCode: string;
+  };
 };
 
 export const test = base.extend<Fixtures>({
@@ -39,6 +45,19 @@ export const test = base.extend<Fixtures>({
     await page.waitForURL(/inventory/); // importante
 
     await use(page);
+  },
+
+  cartWithItem: async ({ loggedPage }, use) => {
+    await loggedPage.locator('.inventory_item button').first().click();
+    await use(loggedPage);
+  },
+
+  userData: async ({}, use) => {
+    await use({
+      firstName: 'Bruno',
+      lastName: 'Tester',
+      postalCode: '12345'
+    });
   },
 });
 

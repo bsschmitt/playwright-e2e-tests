@@ -16,7 +16,7 @@ type Fixtures = {
 export const test = base.extend<Fixtures>({
     loggedPage: async ({ page }, use) => {
         //já autenticado via storageState
-        await page.goto('/inventory');
+        await page.goto('/inventory.html');
         await use(page);
     },
 

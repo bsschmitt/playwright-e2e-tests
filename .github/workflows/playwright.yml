@@ -52,10 +52,6 @@ jobs:
         if: always()
         run: npx playwright show-report --reporter=html || true
 
-      - name: Fix report (light mode)
-        if: always()
-        run: node scripts/fix-report.js
-
       - name: Upload relatório
         uses: actions/upload-artifact@v4
         if: always()

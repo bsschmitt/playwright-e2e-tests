@@ -20,7 +20,10 @@ jobs:
           node-version: 18
 
       - name: Instalar dependências
-        run: npm ci, npx playwright install
+        run: npm ci
+
+      - name: Instalar o Playwright
+        run: npx playwright install
 
       - name: Instalar browsers
         run: npx playwright install --with-deps
@@ -37,7 +40,10 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 18
-      - run: npm ci, npx playwright install
+      - run: npm ci
+
+      - name: Instalar o Playwright
+        run: npx playwright install
 
       - name: Run advanced tests
         run: npx playwright test --config=playwright.advanced.config.ts

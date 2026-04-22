@@ -22,9 +22,6 @@ jobs:
       - name: Instalar dependências
         run: npm ci
 
-      - name: Instalar o Playwright
-        run: npx playwright install
-
       - name: Instalar browsers
         run: npx playwright install --with-deps
 
@@ -46,12 +43,17 @@ jobs:
       - run: npm ci
 
       - name: Instalar o Playwright
-        run: npx playwright install
+        run: npx playwright install --with-deps
 
       - name: Rodar Testes - Avançado
         run: npx playwright test --config=playwright.advanced.config.ts
 
-      - name: Fix report
+      - name: Gerar relatório HTML
+        if: always()
+        run: npx playwright show-report --reporter=html || true
+
+      - name: Fix report (light mode)
+        if: always()
         run: node scripts/fix-report.js
 
       - name: Upload relatório

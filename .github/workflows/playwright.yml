@@ -7,7 +7,7 @@ on:
   pull_request:
 
 jobs:
-  test:
+  basic-tests:
     runs-on: ubuntu-latest
 
     steps:
@@ -25,15 +25,48 @@ jobs:
       - name: Instalar browsers
         run: npx playwright install --with-deps
 
-      - name: Rodar Testes
-        run: npx playwright test
+      - name: Rodar Testes - Básico
+        run: npx playwright test tests/basic
 
-      - name: Fix report
-        run: node scripts/fix-report.js
+      - name: Rodar Testes - Fixtures
+        run: npx playwright test tests/fixtures
 
-      - name: Upload relatório
+      - name: Debug report (basic)
+        if: always()
+        run: ls -R playwright-report || true
+
+      - name: Upload relatório básico
         uses: actions/upload-artifact@v4
         if: always()
         with:
-          name: playwright-report
+          name: playwright-report-basic
+          path: playwright-report
+
+  advanced-tests:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 18
+
+      - run: npm ci
+
+      - name: Instalar browsers
+        run: npx playwright install --with-deps
+
+      - name: Rodar Testes - Avançado
+        run: npx playwright test --config=playwright.advanced.config.ts
+
+      - name: Debug report (advanced)
+        if: always()
+        run: ls -R playwright-report || true
+
+      - name: Upload relatório avançado
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: playwright-report-advanced
           path: playwright-report

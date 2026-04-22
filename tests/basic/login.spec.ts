@@ -1,5 +1,5 @@
 import {test, expect} from '@playwright/test';
-import { LoginPage } from '../Pages/LoginPage';
+import { LoginPage } from '../../Pages/LoginPage';
 import { describe } from 'node:test';
 
 test.describe('Testes de LogIn', async () => {

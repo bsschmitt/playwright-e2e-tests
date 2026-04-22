@@ -20,7 +20,7 @@ export default defineConfig({
   workers: process.env.CI ? 1 : undefined,
 
   reporter: [
-    ['html']
+     ['html', { open: 'never', outputFolder: 'playwright-report' }]
   ],
 
   use: {

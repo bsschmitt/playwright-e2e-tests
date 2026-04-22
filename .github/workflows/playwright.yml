@@ -31,6 +31,17 @@ jobs:
       - name: Rodar Testes - Fixtures
         run: npx playwright test tests/fixtures
 
+      - name: Debug report (basic)
+        if: always()
+        run: ls -R playwright-report || true
+
+      - name: Upload relatório básico
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: playwright-report-basic
+          path: playwright-report
+
   advanced-tests:
     runs-on: ubuntu-latest
 
@@ -40,21 +51,22 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 18
+
       - run: npm ci
 
-      - name: Instalar o Playwright
+      - name: Instalar browsers
         run: npx playwright install --with-deps
 
       - name: Rodar Testes - Avançado
         run: npx playwright test --config=playwright.advanced.config.ts
 
-      - name: Gerar relatório HTML
+      - name: Debug report (advanced)
         if: always()
-        run: npx playwright show-report --reporter=html || true
+        run: ls -R playwright-report || true
 
-      - name: Upload relatório
+      - name: Upload relatório avançado
         uses: actions/upload-artifact@v4
         if: always()
         with:
-          name: playwright-report
+          name: playwright-report-advanced
           path: playwright-report

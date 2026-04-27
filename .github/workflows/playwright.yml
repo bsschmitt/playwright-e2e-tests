@@ -70,3 +70,31 @@ jobs:
         with:
           name: playwright-report-advanced
           path: playwright-report
+  api-tests: 
+    runs-on: ubuntu-latest
+
+    steps: 
+      - name: Checkout código
+        uses: actions/checkout@v4
+
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 18
+
+      - name: Instalar dependências:
+        run: npm ci
+
+      - name: Instalar Playwright
+        run: npx playwright install --with-deps
+
+      - name: Rodar Testes API
+        run: npx playwright test tests/api --reporter=html
+
+      - name: Upload relatório
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: playwright-report-api
+          path: playwright-report

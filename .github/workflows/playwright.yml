@@ -83,7 +83,7 @@ jobs:
         with:
           node-version: 18
 
-      - name: Instalar dependências:
+      - name: Instalar dependências
         run: npm ci
 
       - name: Instalar Playwright

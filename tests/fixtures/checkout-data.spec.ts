@@ -5,11 +5,7 @@ test('Checkout utilizando fixture de dados', async ({ cartWithItem, cartPage, ch
 
     await cartPage.checkout()
 
-    await checkoutPage.preencherDadosFixture(
-        userData.firstName,
-        userData.lastName,
-        userData.postalCode
-    );
+    await checkoutPage.preencherDadosFixture(userData);
 
     await checkoutPage.validaSucesso();
     await expect(cartWithItem.locator('.complete-header')).toBeVisible();

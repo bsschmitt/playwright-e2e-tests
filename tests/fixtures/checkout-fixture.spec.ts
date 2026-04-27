@@ -6,11 +6,7 @@ test.describe('Testes fixture checkout', () => {
         await loggedPage.locator('.shopping_cart_link').click();
 
         await cartPage.checkout();
-        await checkoutPage.preencherDadosFixture(
-            userData.firstName,
-            userData.lastName,
-            userData.postalCode
-        );
+        await checkoutPage.preencherDadosFixture(userData);
         await checkoutPage.validaSucesso();
 
         await expect(loggedPage.locator('.complete-header')).toHaveText("Thank you for your order!");

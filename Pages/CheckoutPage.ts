@@ -11,10 +11,14 @@ export class CheckoutPage {
         await this.page.click('[data-test="finish"]');
     }
 
-    async preencherDadosFixture(firstName: string, lastName: string, postalCode: string) {
-        await this.page.fill('[data-test="firstName"]', firstName);
-        await this.page.fill('[data-test="lastName"]', lastName);
-        await this.page.fill('[data-test="postalCode"]', postalCode);
+    async preencherDadosFixture(userData: {
+        firstName: string;
+        lastName: string;
+        postalCode: string;
+    }) {
+        await this.page.fill('[data-test="firstName"]', userData.firstName);
+        await this.page.fill('[data-test="lastName"]', userData.lastName);
+        await this.page.fill('[data-test="postalCode"]', userData.postalCode);
         await this.page.click('[data-test="continue"]');
         await this.page.click('[data-test="finish"]');
     }

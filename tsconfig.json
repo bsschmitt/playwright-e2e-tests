@@ -1,14 +1,14 @@
 {
   "compilerOptions": {
-    "target": "ESNext",
+    "target": "ES6",
     "module": "CommonJS",
     "strict": true,
     "esModuleInterop": true,
     "skipLibCheck": true,
-    "moduleResolution": "node",   // minúsculo
+    "moduleResolution": "bundler",   // minúsculo
     "resolveJsonModule": true,
     "outDir": "dist",
     "types": ["node", "@playwright/test"]
   },
-  "include": ["tests/**/*.ts", "Pages/**/*.ts", "playwright.config.ts"]
+  "include": ["tests/**/*.ts", "Pages/**/*.ts", "fixtures/**/*.ts", "playwright.config.ts"]
 }
